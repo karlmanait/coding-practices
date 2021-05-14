@@ -1,2 +1,6 @@
-**/build/**
-**/*.vim
+# Build files
+**/build/*
+
+# Vim generated files
+*.vim
+*.swp
