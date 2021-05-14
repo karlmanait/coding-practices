@@ -20,16 +20,6 @@ public:
         m_pivot->prev = m_pivot;
     }
 
-    ~List()
-    {
-        while (m_pivot == m_pivot->next)
-        {
-            iterator* tmp = m_pivot->next;
-            delete m_pivot;
-            m_pivot = tmp;
-        }
-    }
-
     iterator* begin()
     {
         return m_pivot->next;
@@ -53,8 +43,17 @@ public:
     {
         iter->prev->next = iter->next;
         iter->next->prev = iter->prev;
+        delete iter;
     }
 
+    ~List()
+    {
+        for (iterator* tmp = m_pivot->next; tmp != m_pivot; tmp = m_pivot->next)
+        {
+            remove(tmp);
+        }
+        delete m_pivot;
+    }
 
 private:
     iterator* m_pivot;
