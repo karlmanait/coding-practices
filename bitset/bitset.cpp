@@ -20,10 +20,8 @@ public:
     {
         int byte_index = index/8;
         int bit_index = index % 8;
-        if (data)
-            m_data[byte_index] |= 1 << bit_index;
-        else
-            m_data[byte_index] &= ~(1 << bit_index);
+        // set bit to 0, then OR it to 'data'
+        m_data[byte_index] = ((m_data[byte_index] & ~(1 << bit_index)) | (data << bit_index));
     }
 
     bool operator[](int index)
