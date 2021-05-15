@@ -25,7 +25,7 @@ public:
     {
         if (m_tail <= m_head)
         {
-            return T();
+            throw "SizedQueue is empty";
         }
         return m_data[m_head++];
     }

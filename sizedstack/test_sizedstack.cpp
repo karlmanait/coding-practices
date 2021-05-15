@@ -28,6 +28,18 @@ TEST(SizedStackTest, TestPushAndPop)
     EXPECT_EQ(n3.y, 2);
 }
 
+TEST(SizedStackTest, TestPoppingEmptyStack)
+{
+    SizedStack<node> ss(20);
+    ss.push({12, 27});
+
+    node n = ss.pop();
+    EXPECT_EQ(n.x, 12);
+    EXPECT_EQ(n.y, 27);
+
+    EXPECT_THROW({ss.pop();}, const char*);
+}
+
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);

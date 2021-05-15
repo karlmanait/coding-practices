@@ -28,6 +28,18 @@ TEST(SizedQueueTest, TestPushAndPop)
     EXPECT_EQ(n3.y, 999);
 }
 
+TEST(SizedQueueTest, TestPoppingEmptyQueue)
+{
+    SizedQueue<node> sq(20);
+    sq.push({12, 27});
+
+    node n = sq.pop();
+    EXPECT_EQ(n.x, 12);
+    EXPECT_EQ(n.y, 27);
+
+    EXPECT_THROW({sq.pop();}, const char*);
+}
+
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);

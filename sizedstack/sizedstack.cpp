@@ -24,7 +24,7 @@ public:
     {
         if (!m_size)
         {
-            return T();
+            throw "SizedStack is empty";
         }
         return m_data[--m_size];
     }
