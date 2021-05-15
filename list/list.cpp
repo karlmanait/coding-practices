@@ -12,7 +12,6 @@ public:
     };
 
     List()
-    : m_pivot(nullptr)
     {
         // Pivot point for new entries, does not contain actual data
         m_pivot = new iterator{T(), nullptr, nullptr};
