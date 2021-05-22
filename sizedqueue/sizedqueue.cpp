@@ -21,9 +21,14 @@ public:
         m_data[m_tail++] = data;
     }
 
+    bool empty()
+    {
+        return m_tail <= m_head;
+    }
+
     T pop()
     {
-        if (m_tail <= m_head)
+        if (empty())
         {
             throw "SizedQueue is empty";
         }

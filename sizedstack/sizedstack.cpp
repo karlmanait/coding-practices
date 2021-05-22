@@ -20,9 +20,14 @@ public:
         m_data[m_size++] = data;
     }
 
+    bool empty()
+    {
+        return !m_size;
+    }
+
     T pop()
     {
-        if (!m_size)
+        if (empty())
         {
             throw "SizedStack is empty";
         }
