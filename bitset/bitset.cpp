@@ -1,6 +1,3 @@
-#include <iostream>
-#include "gtest/gtest.h"
-
 typedef unsigned char uint8_t;
 
 class Bitset

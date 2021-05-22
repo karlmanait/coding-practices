@@ -1,5 +1,3 @@
-#include <iostream>
-
 typedef unsigned int uint32_t;
 
 #define SIZE 16
