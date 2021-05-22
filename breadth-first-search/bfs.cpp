@@ -45,17 +45,11 @@ public:
         delete [] m_output_maze;
     }
 
-    int to_index(int row, int col)
-    {
-        return m_height*row + col;
-    }
-
     char** solve()
     {
-        // declare custom queue and VLAs
         SizedQueue<node> queue = SizedQueue<node>(m_height*m_width);
-        bool in_queue[m_height*m_width]{};
-        node prev_node[m_height*m_width]{};
+        bool in_queue[m_height][m_width]{};
+        node prev_node[m_height][m_width]{};
 
         queue.push(m_start);
         while (!queue.empty())
@@ -65,13 +59,13 @@ public:
             if (m_output_maze[curr.row][curr.col] == 'e')
             {
                 // traceback to start
-                node trace = prev_node[to_index(curr.row, curr.col)];
+                node trace = prev_node[curr.row][curr.col];
                 while (trace.row != m_start.row || trace.col != m_start.col)
                 {
                     int r = trace.row;
                     int c = trace.col;
                     m_output_maze[r][c] = '+';
-                    trace = prev_node[to_index(r, c)];
+                    trace = prev_node[r][c];
                 }
                 break;
             }
@@ -83,7 +77,6 @@ public:
                 node new_node = {curr.row + m_directions[i].row, curr.col + m_directions[i].col};
                 int r = new_node.row;
                 int c = new_node.col;
-                int index = to_index(r, c);
 
                 // check if out of bounds
                 if (r < 0 || r >= m_height || c < 0 || c >= m_width)
@@ -96,13 +89,13 @@ public:
                     continue;
                 }
                 // check if already in queue
-                if (in_queue[index])
+                if (in_queue[r][c])
                 {
                     continue;
                 }
                 // Add to queue
-                in_queue[index] = true;
-                prev_node[index] = curr;
+                in_queue[r][c] = true;
+                prev_node[r][c] = curr;
                 queue.push(new_node);
             }
         }
