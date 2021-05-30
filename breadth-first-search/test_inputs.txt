@@ -72,6 +72,29 @@ X - X - - - - X e
 - - - - - . . . .
 X X . - X X . X .
 
+input:
+9 9
+. . X . . . X . X
+X s . . X . X X .
+. . X . X . . . .
+. X . . X X . X .
+X . X . . . X X .
+. . . . X X X . .
+. X X . . X . . X
+. e X . X . . . .
+X X . . X X . X .
+
+expected_output:
+- - X - - - X . X
+X s + + X - X X -
+- - X + X - - - -
+- X - + X X - X -
+X - X + - - X X -
++ + + + X X X . .
++ X X - - X . . X
++ e X - X . . . .
+X X - - X X . X .
+
 legends:
 s : start
 e : end

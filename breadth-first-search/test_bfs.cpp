@@ -137,7 +137,7 @@ TEST_P(BfsParameterizedTestFixture, PerTestCase)
 INSTANTIATE_TEST_CASE_P(
     BfsTests,
     BfsParameterizedTestFixture,
-    ::testing::Values(0, 1, 2, 3)
+    ::testing::Values(0, 1, 2, 3, 4)
 );
 
 int main(int argc, char **argv)
