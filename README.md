@@ -13,5 +13,5 @@ should pass the unit tests.
 1. Enter command `cmake <path to directory of CMakeList.txt>` to generate CMake files.
 1. Enter command `make` to build the binary from the generated Makefile
 1. Run the binary to check if all test cases pass
-1. Some test cases (e.g. BFS) expects input from stdin, for that case simply
-   `cat <test_inputs file>` and pipe it onto the binary (e.g. `cat ../test_input.txt | ./test_bfs`)
+1. Some test cases (e.g. BFS, DFS) expects input from stdin, for that case simply redirect content
+   of `test_inputs.txt` onto the binary (e.g. `./test_bfs < ../test_inputs.txt`)
