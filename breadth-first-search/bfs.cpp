@@ -51,7 +51,9 @@ public:
         bool in_queue[m_height][m_width]{};
         node prev_node[m_height][m_width]{};
 
+        in_queue[m_start.row][m_start.col] = true;
         queue.push(m_start);
+
         while (!queue.empty())
         {
             node curr = queue.pop();

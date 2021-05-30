@@ -129,7 +129,7 @@ TEST_P(BfsParameterizedTestFixture, PerTestCase)
         for (int col = 0; col < d.width; ++col)
         {
             EXPECT_EQ(d.expected[row][col], d.actual[row][col]) <<
-                "Does not match at (" << row << ", " << col << ")";
+                "Does not match at row: " << row << ", col: " << col;
         }
     }
 }
