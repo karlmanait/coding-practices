@@ -9,7 +9,7 @@ struct node
 
 TEST(ListTest, TestInsert)
 {
-    List<node> list = List<node>();
+    List<node> list;
     list.insert({1, 2});
     list.insert({69, 420});
     list.insert({322, 999});
@@ -31,7 +31,7 @@ TEST(ListTest, TestInsert)
 
 TEST(ListTest, Test1stRemoval)
 {
-    List<node> list = List<node>();
+    List<node> list;
     list.insert({1, 2});
     list.insert({69, 420});
     list.insert({322, 999});
@@ -53,7 +53,7 @@ TEST(ListTest, Test1stRemoval)
 
 TEST(ListTest, Test2ndRemoval)
 {
-    List<node> list = List<node>();
+    List<node> list;
     list.insert({1, 2});
     list.insert({69, 420});
     list.insert({322, 999});
@@ -75,7 +75,7 @@ TEST(ListTest, Test2ndRemoval)
 
 TEST(ListTest, Test3rdRemoval)
 {
-    List<node> list = List<node>();
+    List<node> list;
     list.insert({1, 2});
     list.insert({69, 420});
     list.insert({322, 999});
@@ -97,7 +97,7 @@ TEST(ListTest, Test3rdRemoval)
 
 TEST(ListTest, TestAllRemoval)
 {
-    List<node> list = List<node>();
+    List<node> list;
     list.insert({1, 2});
     list.insert({69, 420});
     list.insert({322, 999});
