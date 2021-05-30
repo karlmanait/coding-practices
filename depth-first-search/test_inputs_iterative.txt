@@ -1,0 +1,104 @@
+input:
+7 7
+. . . . . . .
+. . . . . . .
+. . . . . . .
+. . . s . . e
+. . . . . . .
+. . . . . . .
+. . . . . . .
+
+expected_output:
+. . . + + + +
+. . . + . . +
+. . . + . . +
+. . . s . . e
+. . . . . . .
+. . . . . . .
+. . . . . . .
+
+input:
+7 7
+. . . . . . .
+. . . . . . .
+. . . . . . .
+e . . s . . .
+. . . . . . .
+. . . . . . .
+. . . . . . .
+
+expected_output:
+- - . + + + +
+- - . + . . +
+- - . + . . +
+e + . s . . +
+. + + . - . +
+. . + + + . +
+. . . . + + +
+
+input:
+4 5
+s . . X .
+. X . . X
+. X X . .
+X . e . .
+
+expected_output:
+s + + X .
+. X + + X
+. X X + -
+X . e + -
+
+input:
+9 9
+. . X . . . X . X
+X s . . X . X X .
+. . X . . . . . .
+. . . . X X . X .
+X . X . . . . X e
+. . . . X X X . .
+. X X . . X . . X
+. . . . . . . . .
+X X . . X X . X .
+
+expected_output:
+- - X + + + X . X
+X s + + X + X X -
+. . X . . + + + +
+. . . . X X . X +
+X . X . . . . X e
+. . . . X X X . .
+. X X . . X . . X
+. . . . . . . . .
+X X . . X X . X .
+
+input:
+9 9
+. . X . . . X . X
+X s . . X . X X .
+. . X . X . . . .
+. X . . X X . X .
+X . X . . . X X .
+. . . . X X X . .
+. X X . . X . . X
+. e X . X . . . .
+X X . . X X . X .
+
+expected_output:
+- - X - - - X . X
+X s + + X - X X -
+. . X + X - - - -
+. X . + X X - X -
+X - X + - - X X -
++ + + + X X X - -
++ X X - - X - - X
++ e X - X - - - -
+X X - - X X - X -
+
+legends:
+s : start
+e : end
+X : wall
+. : empty space
++ : path to destination
+- : traversed but not correct path
