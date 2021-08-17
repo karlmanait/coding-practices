@@ -5,7 +5,7 @@
 
 TEST(PrimeSieveTest, PrimesInAThousandComputed)
 {
-    std::vector<int> primes{
+    std::vector<uint64_t> primes{
         2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89,
         97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181,
         191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281,
@@ -17,7 +17,7 @@ TEST(PrimeSieveTest, PrimesInAThousandComputed)
         877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997
     };
     PrimeSieve sieve(1000);
-    for (int i = 0; i <= 1000; ++i)
+    for (uint64_t i = 0; i <= 1000; ++i)
     {
         bool expected_is_prime = std::find(primes.begin(), primes.end(), i) != primes.end();
         EXPECT_EQ(expected_is_prime, sieve.is_prime(i)) << "number: " << i;
@@ -26,13 +26,13 @@ TEST(PrimeSieveTest, PrimesInAThousandComputed)
 
 TEST(PrimeSieveTest, ListOfPrimesInAHundredComputed)
 {
-    std::vector<int> expected_primes{
+    std::vector<uint64_t> expected_primes{
         2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41,
         43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
     };
     PrimeSieve sieve(100);
-    int* actual_primes = sieve.list_primes();
-    for (long unsigned int i = 0; i < expected_primes.size(); ++i)
+    uint64_t* actual_primes = sieve.list_primes();
+    for (uint64_t i = 0; i < expected_primes.size(); ++i)
     {
         EXPECT_EQ(expected_primes[i], actual_primes[i]);
     }
