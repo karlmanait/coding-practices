@@ -47,18 +47,7 @@ public:
 
     cell next_cell(cell c)
     {
-        int row = c.row;
-        int col = c.col + 1;
-        if (col == m_size)
-        {
-            col = 0;
-            row++;
-            if (row == m_size)
-            {
-                return {-1, -1};
-            }
-        }
-        return {row, col};
+        return {c.row + ((c.col + 1)/m_size), (c.col + 1) % m_size};
     }
 
     cell get_start_cell_by_square_id(int square_id)
@@ -77,35 +66,24 @@ public:
     bool valid_state(cell c)
     {
         // check row
-        int count = 0;
         for (int col = 0; col < m_size; ++col)
         {
-            if (m_output[c.row][col] == m_output[c.row][c.col])
+            if (col != c.col && m_output[c.row][col] == m_output[c.row][c.col])
             {
-                count++;
-                if (count > 1)
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
         // check column
-        count = 0;
         for (int row = 0; row < m_size; ++row)
         {
-            if (m_output[row][c.col] == m_output[c.row][c.col])
+            if (row != c.row && m_output[row][c.col] == m_output[c.row][c.col])
             {
-                count++;
-                if (count > 1)
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
         // check local square
-        count = 0;
         int square_id = get_square_id(c);
         cell start = get_start_cell_by_square_id(square_id);
         cell end = {start.row + m_sqrt_size, start.col + m_sqrt_size};
@@ -113,13 +91,9 @@ public:
         {
             for (int col = start.col; col < end.col; ++col)
             {
-                if (m_output[row][col] == m_output[c.row][c.col])
+                if (row != c.row && col != c.col && m_output[row][col] == m_output[c.row][c.col])
                 {
-                    count++;
-                    if (count > 1)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
         }
@@ -129,32 +103,32 @@ public:
     bool check_cell(cell c)
     {
         bool val = false;
+
         // if end is reached
-        if (c.row == -1 && c.col == -1)
+        if (c.row == m_size)
         {
             return true;
         }
+
         // if pre-filled with value
-        else if (m_output[c.row][c.col])
+        if (m_output[c.row][c.col])
         {
-            val = check_cell(next_cell(c));
+            return check_cell(next_cell(c));
         }
+
         // if cell has no value
-        else
+        for (int cell_val = 1; cell_val <= m_size; ++cell_val)
         {
-            for (int cell_val = 1; cell_val <= m_size; ++cell_val)
+            m_output[c.row][c.col] = cell_val;
+            if (valid_state(c))
             {
-                m_output[c.row][c.col] = cell_val;
-                if (valid_state(c))
+                val = check_cell(next_cell(c));
+                if (val)
                 {
-                    val = check_cell(next_cell(c));
-                    if (val)
-                    {
-                        break;
-                    }
+                    break;
                 }
-                m_output[c.row][c.col] = 0;
             }
+            m_output[c.row][c.col] = 0;
         }
         return val;
     }
